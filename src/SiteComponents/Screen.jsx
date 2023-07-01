@@ -5,7 +5,6 @@ import { MainPage } from './MainPage'
 import { styled } from '@mui/material'
 
 const SideBarMainPageDiv = styled('div')({
-	display: 'flex',
 	width: '100%',
 	fontFamily: 'Arial',
 	height: '100vh'
@@ -17,7 +16,7 @@ const HeaderDiv = styled('div')({
 	background: '#4C5658',
 	height: '40px',
 	justifyContent: 'center',
-	alignItems: 'center'
+	alignItems: 'center',
 })
 
 const HeaderDivText = styled('p')({
@@ -27,8 +26,8 @@ const HeaderDivText = styled('p')({
 })
 
 const AllElementsWrap = styled('div')({
-	display: 'flex',
-	flexDirection: 'column'
+	// display: 'flex',
+	// flexDirection: 'column'
 })
 
 export function Screen () {

@@ -4,8 +4,8 @@ import { QuizPage } from './QuizPage'
 
 const Page = styled('div')({
 	display: 'flex',
-	flexGrow: '8',
-	background: '#32373D'
+	background: '#32373D',
+	height: '100vh'
 })
 
 export function MainPage(props) {

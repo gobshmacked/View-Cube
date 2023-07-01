@@ -6,7 +6,11 @@ const SideBarDiv = styled('div')({
 	flexDirection: 'column',
 	alignItems: 'center',
 	background: '#0A66C2',
-	flexGrow: '1'
+	position: 'fixed',
+	top: '0',
+	left: '0',
+	width: '10%',
+	height: '100vh',
 })
 
 const SideBarElement = styled('p')({
@@ -17,6 +21,8 @@ const SideBarElement = styled('p')({
 export function SideBar(props) {
 	return (
 		<SideBarDiv>
+			<br/>
+			<br/>
 			<SideBarElement onClick = {() => props.pageStateChange('quiz')}>Quiz</SideBarElement>
 			<SideBarElement>About</SideBarElement>
 			<SideBarElement>Contact</SideBarElement>
