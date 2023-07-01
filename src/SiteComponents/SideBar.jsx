@@ -12,7 +12,6 @@ const SideBarDiv = styled('div')({
 const SideBarElement = styled('p')({
 	fontSize: '20px',
 	color: 'white',
-	fontWeight: 'bold'
 })
 
 export function SideBar(props) {
@@ -21,6 +20,7 @@ export function SideBar(props) {
 			<SideBarElement onClick = {() => props.pageStateChange('quiz')}>Quiz</SideBarElement>
 			<SideBarElement>About</SideBarElement>
 			<SideBarElement>Contact</SideBarElement>
+			<SideBarElement>Light Mode</SideBarElement>
 		</SideBarDiv>
 	)
 }
