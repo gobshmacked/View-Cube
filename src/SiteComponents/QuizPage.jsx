@@ -3,6 +3,16 @@ import { styled } from '@mui/material'
 import { questions } from '../questions.js'
 import './styles/QuizPage.css'
 
+let incompleteQuestionsString = ''
+
+const QuizBox = styled('div')({
+	display: 'flex',
+	flexDirection: 'column',
+	marginLeft: 'auto',
+	marginRight: 'auto',
+	width: '40%'
+})
+
 const AllQuestions = styled('div')({
 	display: 'flex',
 	flexDirection: 'column',
@@ -10,9 +20,7 @@ const AllQuestions = styled('div')({
 	marginRight: 'auto'
 })
 
-const CompleteQuestionBox = styled('div')({
-
-})
+const CompleteQuestionBox = styled('div')({})
 
 const QuestionAnswerBox = styled('div')({
 	display: 'flex',
@@ -32,42 +40,58 @@ const Answers = styled('div')({
 	justifyContent: 'center'
 })
 
-// const Answer = styled('button')({
-// 	background: '#CCCCCC',
-// 	color: 'black',
-// 	fontWeight: 'bold',
-// 	paddingLeft: '20px',
-// 	paddingRight: '20px',
-// 	paddingTop: '10px',
-// 	paddingBottom: '10px',
-// 	borderRadius: '5px',
-// 	fontSize: '14px',
-// 	border: '0px',
-// 	'&:hover': {
-// 		background: '#0A66C2',
-// 		color: 'white'
-// 	}
-// })
+const SubmitQuiz = styled('button')({
+	marginTop: '30px',
+	width: '100%',
+	marginBottom: '50px',
+	paddingTop: '20px',
+	paddingBottom: '20px',
+	fontSize: '20px',
+	background: '#0A66C2',
+	color: 'white',
+	borderRadius: '30px',
+	border: '0',
+	'&:hover': {
+		background: '#3F8CFF'
+	}
+})
+
+const ErrorMessage = styled('p')({
+	color: 'red'
+})
 
 
-export function QuizPage() {
-	let questions = FormatQuestions()
+export function QuizPage(props) {
+	const [incompleteQuestions, setIncompleteQuestions] = React.useState(false)
+	const [selectedOption, setSelectedOption] = React.useState(Array(questions.length).fill(0));
+	function changeIncompleteQuestions(status) {
+		setIncompleteQuestions(status)
+	}
+	const handleSelectionChange = (index, element) => {
+		let tempArr = [...selectedOption]
+		if (tempArr[index] !== 0) {
+			tempArr[index] = 0
+		} else {
+			tempArr[index] = element
+		}
+		setSelectedOption(tempArr)
+	}
+	let formattedQuestions = FormatQuestions(selectedOption, handleSelectionChange)
 	return (
-		<AllQuestions>
-			{questions.map((item, index) => (
-				<CompleteQuestionBox key = {index}>{item}</CompleteQuestionBox>
-			))}
-		</AllQuestions>
+		<QuizBox>
+			<AllQuestions>
+				{formattedQuestions.map((item, index) => (
+					<CompleteQuestionBox key = {index}>{item}</CompleteQuestionBox>
+				))}
+			</AllQuestions>
+			<SubmitQuiz onClick = {() => ClickedSubmit(selectedOption, props.pageStateChange, changeIncompleteQuestions)}>Submit Answers</SubmitQuiz>
+			{incompleteQuestions && <ErrorMessage>There are unanswered questions! You can answer them or press submit answers again to set them to neutral and get your cube</ErrorMessage>}
+			{incompleteQuestions && <ErrorMessage>The questions that have not been answered are: {incompleteQuestionsString}</ErrorMessage>}
+		</QuizBox>
 	)
 }
 
-function FormatQuestions () {
-	const [selectedOption, setSelectedOption] = React.useState(Array(questions.length).fill(0));
-	const handleSelectionChange = (index, element) => {
-		let tempArr = [...selectedOption]
-		tempArr[index] = element
-		setSelectedOption(tempArr)
-	}
+function FormatQuestions (selectedOption, handleSelectionChange) {
 	let formattedQuestions = []
 	for (const q in questions) {
 		selectedOption.push('')
@@ -83,4 +107,24 @@ function FormatQuestions () {
 		)
 	}
 	return formattedQuestions
+}
+
+function ClickedSubmit(answers, pageStateChange, setIncompleteQuestions) {
+	let questionList = []
+	for (let answer in answers) {
+		if (answers[answer] === 0) {
+			questionList.push(answer)
+			if (questionList.length === 1) {
+				incompleteQuestionsString = String(parseInt(answer) + 1)
+			} else {
+				incompleteQuestionsString = incompleteQuestionsString + ', ' + String(parseInt(answer) + 1)
+			}
+		}
+	}
+	if (questionList.length > 0) {
+		console.log(incompleteQuestionsString)
+		setIncompleteQuestions(true)
+		return
+	}
+	
 }

@@ -32,8 +32,12 @@ const AllElementsWrap = styled('div')({
 
 export function Screen () {
 	const [page, setPage] = React.useState('quiz')
+	const [sideBarShow, setSideBarShow] = React.useState('show')
 	function newPageState (newPage) {
 		setPage(newPage)
+	}
+	function newSideBarShow (newShow) {
+		setSideBarShow(newShow)
 	}
   	return (
     	<>
@@ -42,8 +46,8 @@ export function Screen () {
 					<HeaderDivText>Political Cube</HeaderDivText>
 				</HeaderDiv>
 				<SideBarMainPageDiv>
-					<SideBar pageStateChange = {newPageState} currentPage = {page}/>
-					{<MainPage currentPage = {page}/>}
+					<SideBar pageStateChange = {newPageState} currentPage = {page} sideBarShow = {sideBarShow} sideBarShowChange = {newSideBarShow}/>
+					{<MainPage currentPage = {page} pageStateChange = {newPageState}/>}
 				</SideBarMainPageDiv>
 				{/* <ResultCube/> */}
 			</AllElementsWrap>

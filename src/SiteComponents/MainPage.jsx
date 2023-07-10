@@ -11,7 +11,7 @@ const Page = styled('div')({
 export function MainPage(props) {
 	return (
 		<Page>
-			{props.currentPage === 'quiz' && <QuizPage/>}
+			{props.currentPage === 'quiz' && <QuizPage pageStateChange = {props.pageStateChange}/>}
 		</Page>
 	)
 }
