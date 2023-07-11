@@ -1,6 +1,7 @@
 import React from 'react'
 import { styled } from '@mui/material'
 import { questions } from '../questions.js'
+import { ConfigureResults } from './ConfigureResults.js'
 import './styles/QuizPage.css'
 
 let incompleteQuestionsString = ''
@@ -84,7 +85,7 @@ export function QuizPage(props) {
 					<CompleteQuestionBox key = {index}>{item}</CompleteQuestionBox>
 				))}
 			</AllQuestions>
-			<SubmitQuiz onClick = {() => ClickedSubmit(selectedOption, props.pageStateChange, changeIncompleteQuestions)}>Submit Answers</SubmitQuiz>
+			<SubmitQuiz onClick = {() => ClickedSubmit(selectedOption, props.pageStateChange, incompleteQuestions, changeIncompleteQuestions)}>Submit Answers</SubmitQuiz>
 			{incompleteQuestions && <ErrorMessage>There are unanswered questions! You can answer them or press submit answers again to set them to neutral and get your cube</ErrorMessage>}
 			{incompleteQuestions && <ErrorMessage>The questions that have not been answered are: {incompleteQuestionsString}</ErrorMessage>}
 		</QuizBox>
@@ -94,7 +95,6 @@ export function QuizPage(props) {
 function FormatQuestions (selectedOption, handleSelectionChange) {
 	let formattedQuestions = []
 	for (const q in questions) {
-		selectedOption.push('')
 		formattedQuestions.push(
 			<QuestionAnswerBox>
 				<Question>{questions[q].question}</Question>
@@ -109,7 +109,7 @@ function FormatQuestions (selectedOption, handleSelectionChange) {
 	return formattedQuestions
 }
 
-function ClickedSubmit(answers, pageStateChange, setIncompleteQuestions) {
+function ClickedSubmit(answers, pageStateChange, incompleteQuestions, setIncompleteQuestions) {
 	let questionList = []
 	for (let answer in answers) {
 		if (answers[answer] === 0) {
@@ -121,10 +121,10 @@ function ClickedSubmit(answers, pageStateChange, setIncompleteQuestions) {
 			}
 		}
 	}
-	if (questionList.length > 0) {
-		console.log(incompleteQuestionsString)
+	if (questionList.length > 0 && !incompleteQuestions) {
 		setIncompleteQuestions(true)
 		return
 	}
-	
+	ConfigureResults(answers)
+	pageStateChange('results')
 }

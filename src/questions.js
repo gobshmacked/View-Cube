@@ -31,5 +31,7 @@ export const questions = [
 		question: 'Corporations should be forced to pay for pollution they create',
 		x: -1,
 		y: 0
-	}
+	},
 ]
+
+/* */

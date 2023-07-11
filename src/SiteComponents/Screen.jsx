@@ -43,7 +43,7 @@ export function Screen () {
     	<>
 			<AllElementsWrap>
 				<HeaderDiv>
-					<HeaderDivText>Political Cube</HeaderDivText>
+					<HeaderDivText>Political Alignment</HeaderDivText>
 				</HeaderDiv>
 				<SideBarMainPageDiv>
 					<SideBar pageStateChange = {newPageState} currentPage = {page} sideBarShow = {sideBarShow} sideBarShowChange = {newSideBarShow}/>
