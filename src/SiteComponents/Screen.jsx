@@ -26,6 +26,7 @@ const HeaderDivText = styled('p')({
 })
 
 const AllElementsWrap = styled('div')({
+	height: '100%'
 	// display: 'flex',
 	// flexDirection: 'column'
 })

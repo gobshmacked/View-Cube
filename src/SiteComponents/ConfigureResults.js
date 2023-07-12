@@ -16,8 +16,8 @@ function CalculateResults(userInput) {
 	let maxY = 0
 	console.log(userInput)
 	for (const answer in userInput) {
-		maxX = maxX + questions[answer].x
-		maxY = maxY + questions[answer].y
+		maxX = maxX + Math.abs(questions[answer].x)
+		maxY = maxY + Math.abs(questions[answer].y)
 		if (userInput[answer] === 'agree') {
 			tempX = tempX + questions[answer].x
 			tempY = tempY + questions[answer].y

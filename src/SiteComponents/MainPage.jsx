@@ -6,7 +6,7 @@ import { ResultCube } from './ResultCube'
 const Page = styled('div')({
 	display: 'flex',
 	background: '#32373D',
-	height: '100vh'
+	height: '100'
 })
 
 export function MainPage(props) {
