@@ -14,27 +14,27 @@ function CalculateResults(userInput) {
 	let tempZ = 0
 	let maxX = 0
 	let maxY = 0
-	console.log(userInput)
+	let maxZ = 0
 	for (const answer in userInput) {
 		maxX = maxX + Math.abs(questions[answer].x)
 		maxY = maxY + Math.abs(questions[answer].y)
+		maxZ = maxZ + Math.abs(questions[answer].z)
 		if (userInput[answer] === 'agree') {
 			tempX = tempX + questions[answer].x
 			tempY = tempY + questions[answer].y
+			tempZ = tempZ + questions[answer].z
 		} else if (userInput[answer] === 'disagree') {
 			tempX = tempX - questions[answer].x
 			tempY = tempY - questions[answer].y
+			tempZ = tempZ - questions[answer].z
 		}
-		console.log(maxX, maxY)
 	}
-	console.log(maxX, maxY)
 	tempX = (tempX / maxX) * 10
 	tempY = (tempY / maxY) * 10
-	tempZ = (tempX + tempY) / 2
+	tempZ = (tempZ / maxZ) * 10
 
 	finalX = tempX
 	finalY = tempY
 	finalZ = tempZ
-	console.log(finalX, finalY, finalZ)
 }
 

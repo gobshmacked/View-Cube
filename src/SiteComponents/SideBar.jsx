@@ -57,7 +57,6 @@ function SideBarShow(props) {
 			<SideBarElement onClick = {() => props.pageStateChange('quiz')}>Quiz</SideBarElement>
 			<SideBarElement>About</SideBarElement>
 			<SideBarElement>Contact</SideBarElement>
-			<SideBarElement>Light Mode</SideBarElement>
 		</SideBarDiv>
 	)
 }
