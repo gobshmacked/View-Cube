@@ -1,23 +1,72 @@
 import React from 'react'
 import Plot from 'react-plotly.js';
 import { styled } from '@mui/material'
+import Slider, { SliderThumb, SliderValueLabelProps } from '@mui/material/Slider';
 import { finalX, finalY, finalZ } from './ConfigureResults.js'
-
 
 const ResultsBlock = styled('div')({
 	display: 'flex',
 	flexDirection: 'column',
 	marginLeft: 'auto',
-	marginRight: 'auto'
+	marginRight: 'auto',
+	background: '#FFFFFF'
+})
+
+const SliderDiv = styled('div')({
+	display: 'flex',
+	flexDirection: 'row',
+	justifyContent: 'space-around',
+})
+
+const SliderLabel = styled('p')({
+	marginRight: '20px',
+	marginLeft: '20px'
+})
+
+const WritingBlock = styled('div')({
+	display: 'flex',
+	flexDirection: 'column',
+	justifyContent: 'left',
+	alignItems: 'flex-start',
+	marginTop: '20px'
+})
+
+const InstructionHeading = styled('p')({
+	color: '#0A66C2',
+	fontSize: '18px',
+	fontWeight: 'bold'
+})
+
+const InstructionHeadingTop = styled(InstructionHeading)({
+	marginLeft: '13%',
+})
+
+const Writing = styled('p')({
+	marginLeft: '13%',
 })
 
 export function ResultCube () {
-	let [screenWidth, setScreenWidth] = React.useState(window.innerWidth)
-	let [screenHeight, setScreenHeight] = React.useState(window.innerHeight)
 	return (
 		<ResultsBlock>
+			<br/>
+			<WritingBlock>
+				<InstructionHeadingTop>Results</InstructionHeadingTop>
+				<Writing>Scroll down to view your results from the Political Alignment Test</Writing>
+			</WritingBlock>
+			<br/><br/><br/>
+			<InstructionHeading>Political Views Map</InstructionHeading>
 			<Create2DPlot/>
-    		<CreateCube screenHeight={screenHeight} screenWidth={screenWidth}/>
+			<br/><br/><br/><br/><br/><br/>
+			<InstructionHeading>Philosophical Views Slider</InstructionHeading>
+			<br/><br/><br/>
+			<SliderDiv>
+				<SliderLabel>Utilitarianism</SliderLabel>
+				<PrettoSlider defaultValue = {CalculateSliderNumber}/>
+				<SliderLabel>Deontology</SliderLabel>
+			</SliderDiv>
+			<br/><br/><br/>
+			<InstructionHeading>Your Political Alignment</InstructionHeading>
+    		<CreateCube/>
 		</ResultsBlock>
 		
 		)
@@ -37,8 +86,8 @@ function CreateCube(props) {
 		},
 		]}
 		layout={{
-			height: props.screenHeight * (2/3),
-			width: props.screenWidth / 2,
+			height: window.innerHeight * (6/7),
+			width: window.innerHeight * (6/7),
 			showlegend: false,
 			range: [-10, 10],
 			scene: {
@@ -95,17 +144,16 @@ function Create2DPlot(props) {
 		},
 		]}
 		layout={{
-			height: props.screenHeight,
-			width: props.screenWidth,
+			height: window.innerHeight * (6/7),
+			width: window.innerHeight * (6/7),
 			showlegend: false,
-			//range: [-10, 10],
 			xaxis: {
 				range: [-10, 10],
 				tickvals: [-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10],
 			},
 			yaxis: {
 				range: [-10, 10],
-				tickvals: [-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10]
+				tickvals: [-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10],
 			},
 			annotations: [
 				{
@@ -201,3 +249,51 @@ function Create2DPlot(props) {
 		/>
 	)
 }
+
+const CalculateSliderNumber = () => {
+	if (finalZ > 0) {
+		return finalZ * 5 + 50
+	} else if (finalZ < 0) {
+		return Math.abs(finalZ * -5 - 50)
+	}
+	return 50
+}
+
+const PrettoSlider = styled(Slider)({
+	color: '#52af77',
+	height: 8,
+	'& .MuiSlider-track': {
+	  border: 'none',
+	},
+	'& .MuiSlider-thumb': {
+	  height: 24,
+	  width: 24,
+	  backgroundColor: '#fff',
+	  border: '2px solid currentColor',
+	  '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
+		boxShadow: 'inherit',
+	  },
+	  '&:before': {
+		display: 'none',
+	  },
+	},
+	'& .MuiSlider-valueLabel': {
+	  lineHeight: 1.2,
+	  fontSize: 12,
+	  background: 'unset',
+	  padding: 0,
+	  width: 32,
+	  height: 32,
+	  borderRadius: '50% 50% 50% 0',
+	  backgroundColor: '#52af77',
+	  transformOrigin: 'bottom left',
+	  transform: 'translate(50%, -100%) rotate(-45deg) scale(0)',
+	  '&:before': { display: 'none' },
+	  '&.MuiSlider-valueLabelOpen': {
+		transform: 'translate(50%, -100%) rotate(-45deg) scale(1)',
+	  },
+	  '& > *': {
+		transform: 'rotate(45deg)',
+	  },
+	},
+  });

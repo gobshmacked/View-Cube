@@ -64,7 +64,7 @@ const ErrorMessage = styled('p')({
 
 const Subheading = styled('p')({
 	color: '#3F8CFF',
-	fontSize: '30px',
+	fontSize: '25px',
 	borderRadius: '60px',
 	fontWeight: 'bold',
 	paddingTop: '10px',
@@ -75,6 +75,31 @@ const Break = styled('hr')({
 	width: '100%'
 })
 
+const WritingBlock = styled('div')({
+	display: 'flex',
+	flexDirection: 'column',
+	justifyContent: 'left',
+	alignItems: 'flex-start',
+	marginTop: '20px'
+})
+
+const InstructionHeading = styled('p')({
+	color: '#3F8CFF',
+	fontSize: '27px',
+	fontWeight: 'bold'
+})
+
+const InstructionHeadingTop = styled(InstructionHeading)({
+	marginLeft: '10%',
+})
+
+const Writing = styled('p')({
+	color: 'whitesmoke',
+	marginLeft: '10%',
+	textAlign: 'left',
+	fontSize: '18px'
+})
+
 export function QuizPage(props) {
 	const [incompleteQuestions, setIncompleteQuestions] = React.useState(false)
 	const [selectedOption, setSelectedOption] = React.useState(Array(questions.length).fill(0));
@@ -83,7 +108,7 @@ export function QuizPage(props) {
 	}
 	const handleSelectionChange = (index, element) => {
 		let tempArr = [...selectedOption]
-		if (tempArr[index] !== 0) {
+		if (tempArr[index] === element) {
 			tempArr[index] = 0
 		} else {
 			tempArr[index] = element
@@ -93,6 +118,13 @@ export function QuizPage(props) {
 	let formattedQuestions = FormatQuestions(selectedOption, handleSelectionChange)
 	return (
 		<QuizBox>
+			<WritingBlock>
+				<InstructionHeadingTop>Instructions</InstructionHeadingTop>
+				<Writing>Complete the test and press submit to get your Political Alignment Results</Writing>
+				<Writing>Each question is a statement. Select whether you mostly agree, disagree or are neutral towards it</Writing>
+				<Writing>Any questions left blank will be set to neutral</Writing>
+				<Writing>There are 39 questions and the test should take 2 - 15 minutes</Writing>
+			</WritingBlock>
 			<AllQuestions>
 				{formattedQuestions.map((item, index) => (
 					<CompleteQuestionBox key = {index}>{item}</CompleteQuestionBox>
@@ -110,7 +142,7 @@ function FormatQuestions (selectedOption, handleSelectionChange) {
 	for (const q in questions) {
 		formattedQuestions.push(
 			<QuestionAnswerBox>
-				{'subheading' in questions[q] && <Subheading>{questions[q].subheading}</Subheading>}
+				{'subheading' in questions[q] && <Subheading>{questions[q].subheading + " Questions"}</Subheading>}
 				<Question>{questions[q].question}</Question>
 				<Answers>
 					<button onClick = {() => handleSelectionChange(q, 'disagree')} className={selectedOption[q] === 'disagree' ? 'selected' : 'normalButton'}>Disagree</button>

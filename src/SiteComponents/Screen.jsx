@@ -34,6 +34,9 @@ const AllElementsWrap = styled('div')({
 export function Screen () {
 	const [page, setPage] = React.useState('quiz')
 	const [sideBarShow, setSideBarShow] = React.useState('show')
+	if (window.innerWidth < 600 && sideBarShow == 'show') {
+		setSideBarShow('hide')
+	}
 	function newPageState (newPage) {
 		setPage(newPage)
 	}
