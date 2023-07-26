@@ -6,7 +6,8 @@ export const questions = [
 		question: `The government should tax it's citizens`,
 		x: -2,
 		y: 0,
-		z: 0
+		z: 0,
+		subheading: 'Tax and Government Spending'
 	},
 	{
 		question: 'The government should apply a progressive income tax (higher earners are taxed at a higher rate)',
@@ -86,12 +87,12 @@ export const questions = [
 		y: 0,
 		z: 0
 	},
-	//UPTO HERE
 	{
 		question: 'Gay marriage should be legal',
 		x: 0,
 		y: -2,
-		z: 0
+		z: 0,
+		subheading: 'Individual Rights'
 	},
 	{
 		question: 'Marijuana should be legal for medical use',
@@ -195,12 +196,12 @@ export const questions = [
 		y: 0,
 		z: 0
 	},
-	// morlaity section
 	{
 		question: `I would prefer to help someone from my country than someone from another country`,
 		x: 0,
 		y: 0,
-		z: 1
+		z: 1,
+		subheading: "Morality"
 	},
 	{
 		question: 'I would prefer to spend money on leisure activites than helping the poor',

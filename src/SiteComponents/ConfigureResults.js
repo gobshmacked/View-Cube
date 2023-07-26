@@ -33,8 +33,8 @@ function CalculateResults(userInput) {
 	tempY = (tempY / maxY) * 10
 	tempZ = (tempZ / maxZ) * 10
 
-	finalX = tempX
-	finalY = tempY
-	finalZ = tempZ
+	finalX = tempX.toFixed(1)
+	finalY = tempY.toFixed(1)
+	finalZ = tempZ.toFixed(1)
 }
 

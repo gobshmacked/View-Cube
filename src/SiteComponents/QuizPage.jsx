@@ -38,7 +38,8 @@ const Question = styled('p')({
 const Answers = styled('div')({
 	display: 'flex',
 	columnGap: '15px',
-	justifyContent: 'center'
+	justifyContent: 'center',
+	marginBottom: '15px'
 })
 
 const SubmitQuiz = styled('button')({
@@ -61,6 +62,18 @@ const ErrorMessage = styled('p')({
 	color: 'red'
 })
 
+const Subheading = styled('p')({
+	color: '#3F8CFF',
+	fontSize: '30px',
+	borderRadius: '60px',
+	fontWeight: 'bold',
+	paddingTop: '10px',
+	paddingBottom: '10px'
+})
+
+const Break = styled('hr')({
+	width: '100%'
+})
 
 export function QuizPage(props) {
 	const [incompleteQuestions, setIncompleteQuestions] = React.useState(false)
@@ -97,12 +110,14 @@ function FormatQuestions (selectedOption, handleSelectionChange) {
 	for (const q in questions) {
 		formattedQuestions.push(
 			<QuestionAnswerBox>
+				{'subheading' in questions[q] && <Subheading>{questions[q].subheading}</Subheading>}
 				<Question>{questions[q].question}</Question>
 				<Answers>
 					<button onClick = {() => handleSelectionChange(q, 'disagree')} className={selectedOption[q] === 'disagree' ? 'selected' : 'normalButton'}>Disagree</button>
 					<button onClick = {() => handleSelectionChange(q, 'neutral')} className={selectedOption[q] === 'neutral' ? 'selected' : 'normalButton'}>Neutral</button>
 					<button onClick = {() => handleSelectionChange(q, 'agree')} className={selectedOption[q] === 'agree' ? 'selected' : 'normalButton'}>Agree</button>
 				</Answers>
+				<Break/>
 			</QuestionAnswerBox>
 		)
 	}
