@@ -55,8 +55,8 @@ function SideBarShow(props) {
 			<SideBarHideButton onClick = {() => props.sideBarShowChange('hide')}>{'<'}</SideBarHideButton>
 			<br/>
 			<SideBarElement onClick = {() => props.pageStateChange('quiz')}>Quiz</SideBarElement>
-			<SideBarElement>About</SideBarElement>
-			<SideBarElement>Contact</SideBarElement>
+			<SideBarElement onClick = {() => props.pageStateChange('about')}>About</SideBarElement>
+			<SideBarElement onClick = {() => props.pageStateChange('contact')}>Contact</SideBarElement>
 		</SideBarDiv>
 	)
 }

@@ -20,7 +20,7 @@ const SliderDiv = styled('div')({
 
 const SliderLabel = styled('p')({
 	marginRight: '20px',
-	marginLeft: '20px'
+	marginLeft: '20px',
 })
 
 const WritingBlock = styled('div')({
@@ -45,6 +45,15 @@ const Writing = styled('p')({
 	marginLeft: '13%',
 })
 
+const BlackWriting = styled('p')({
+
+})
+
+const LineSeperator = styled('hr')({
+	width: '80%',
+	size: '10'
+})
+
 export function ResultCube () {
 	return (
 		<ResultsBlock>
@@ -53,19 +62,28 @@ export function ResultCube () {
 				<InstructionHeadingTop>Results</InstructionHeadingTop>
 				<Writing>Scroll down to view your results from the Political Alignment Test</Writing>
 			</WritingBlock>
-			<br/><br/><br/>
+			<br/>
+			<LineSeperator/>
+			<br/><br/>
 			<InstructionHeading>Political Views Map</InstructionHeading>
 			<Create2DPlot/>
+			<BlackWriting>{finalX},{finalY}</BlackWriting>
+			<br/><br/><br/>
+			<LineSeperator/>
 			<br/><br/><br/><br/><br/><br/>
 			<InstructionHeading>Philosophical Views Slider</InstructionHeading>
 			<br/><br/><br/>
+			<BlackWriting>{finalZ}</BlackWriting>
 			<SliderDiv>
-				<SliderLabel>Utilitarianism</SliderLabel>
+				<SliderLabel>Utilitarianism -10</SliderLabel>
 				<PrettoSlider defaultValue = {CalculateSliderNumber}/>
-				<SliderLabel>Deontology</SliderLabel>
+				<SliderLabel>Deontology 10</SliderLabel>
 			</SliderDiv>
+			<br/><br/><br/><br/><br/><br/><br/><br/>
+			<LineSeperator/>
 			<br/><br/><br/>
 			<InstructionHeading>Your Political Alignment</InstructionHeading>
+			<BlackWriting>{finalX},{finalY},{finalZ}</BlackWriting>
     		<CreateCube/>
 		</ResultsBlock>
 		
@@ -140,7 +158,7 @@ function Create2DPlot(props) {
 			y: [finalY], 
 			mode: 'markers', 
 			type:'scatter',
-			marker: {size: 12},
+			marker: {size: 14, color: 'white'},
 		},
 		]}
 		layout={{

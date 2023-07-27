@@ -27,8 +27,6 @@ const HeaderDivText = styled('p')({
 
 const AllElementsWrap = styled('div')({
 	height: '100%'
-	// display: 'flex',
-	// flexDirection: 'column'
 })
 
 export function Screen () {
@@ -39,6 +37,7 @@ export function Screen () {
 	}
 	function newPageState (newPage) {
 		setPage(newPage)
+		window.scrollTo(0,0);
 	}
 	function newSideBarShow (newShow) {
 		setSideBarShow(newShow)

@@ -68,7 +68,7 @@ const Subheading = styled('p')({
 	borderRadius: '60px',
 	fontWeight: 'bold',
 	paddingTop: '10px',
-	paddingBottom: '10px'
+	paddingBottom: '10px',
 })
 
 const Break = styled('hr')({
@@ -86,7 +86,7 @@ const WritingBlock = styled('div')({
 const InstructionHeading = styled('p')({
 	color: '#3F8CFF',
 	fontSize: '27px',
-	fontWeight: 'bold'
+	fontWeight: 'bold',
 })
 
 const InstructionHeadingTop = styled(InstructionHeading)({
@@ -101,11 +101,7 @@ const Writing = styled('p')({
 })
 
 export function QuizPage(props) {
-	// const [incompleteQuestions, setIncompleteQuestions] = React.useState(false)
 	const [selectedOption, setSelectedOption] = React.useState(Array(questions.length).fill(0));
-	// function changeIncompleteQuestions(status) {
-	// 	setIncompleteQuestions(status)
-	// }
 	const handleSelectionChange = (index, element) => {
 		let tempArr = [...selectedOption]
 		if (tempArr[index] === element) {
@@ -131,8 +127,6 @@ export function QuizPage(props) {
 				))}
 			</AllQuestions>
 			<SubmitQuiz onClick = {() => ClickedSubmit(selectedOption, props.pageStateChange)}>Submit Answers</SubmitQuiz>
-			{/* {incompleteQuestions && <ErrorMessage>There are unanswered questions! You can answer them or press submit answers again to set them to neutral and get your cube</ErrorMessage>}
-			{incompleteQuestions && <ErrorMessage>The questions that have not been answered are: {incompleteQuestionsString}</ErrorMessage>} */}
 		</QuizBox>
 	)
 }
@@ -143,6 +137,7 @@ function FormatQuestions (selectedOption, handleSelectionChange) {
 		formattedQuestions.push(
 			<QuestionAnswerBox>
 				{'subheading' in questions[q] && <Subheading>{questions[q].subheading + " Questions"}</Subheading>}
+				{'subheading' in questions[q] && <Break/>}
 				<Question>{questions[q].question}</Question>
 				<Answers>
 					<button onClick = {() => handleSelectionChange(q, 'disagree')} className={selectedOption[q] === 'disagree' ? 'selected' : 'normalButton'}>Disagree</button>
@@ -157,21 +152,6 @@ function FormatQuestions (selectedOption, handleSelectionChange) {
 }
 
 function ClickedSubmit(answers, pageStateChange) {
-	// let questionList = []
-	// for (let answer in answers) {
-	// 	if (answers[answer] === 0) {
-	// 		questionList.push(answer)
-	// 		if (questionList.length === 1) {
-	// 			incompleteQuestionsString = String(parseInt(answer) + 1)
-	// 		} else {
-	// 			incompleteQuestionsString = incompleteQuestionsString + ', ' + String(parseInt(answer) + 1)
-	// 		}
-	// 	}
-	// }
-	// if (questionList.length > 0 && !incompleteQuestions) {
-	// 	setIncompleteQuestions(true)
-	// 	return
-	// }
 	ConfigureResults(answers)
 	pageStateChange('results')
 }
