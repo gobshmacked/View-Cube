@@ -76,7 +76,7 @@ export function ResultCube () {
 			<BlackWriting>{finalZ}</BlackWriting>
 			<SliderDiv>
 				<SliderLabel>Utilitarianism -10</SliderLabel>
-				<PrettoSlider defaultValue = {CalculateSliderNumber}/>
+				<PrettoSlider defaultValue = {CalculateSliderNumber()}/>
 				<SliderLabel>Deontology 10</SliderLabel>
 			</SliderDiv>
 			<br/><br/><br/><br/><br/><br/><br/><br/>
@@ -149,7 +149,7 @@ function CreateCube(props) {
 	);
 }
 
-function Create2DPlot(props) {
+function Create2DPlot() {
 	return (
 		<Plot
 		data={[
