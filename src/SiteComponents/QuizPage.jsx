@@ -101,11 +101,11 @@ const Writing = styled('p')({
 })
 
 export function QuizPage(props) {
-	const [incompleteQuestions, setIncompleteQuestions] = React.useState(false)
+	// const [incompleteQuestions, setIncompleteQuestions] = React.useState(false)
 	const [selectedOption, setSelectedOption] = React.useState(Array(questions.length).fill(0));
-	function changeIncompleteQuestions(status) {
-		setIncompleteQuestions(status)
-	}
+	// function changeIncompleteQuestions(status) {
+	// 	setIncompleteQuestions(status)
+	// }
 	const handleSelectionChange = (index, element) => {
 		let tempArr = [...selectedOption]
 		if (tempArr[index] === element) {
@@ -120,9 +120,9 @@ export function QuizPage(props) {
 		<QuizBox>
 			<WritingBlock>
 				<InstructionHeadingTop>Instructions</InstructionHeadingTop>
-				<Writing>Complete the test and press submit to get your Political Alignment Results</Writing>
+				<Writing>Complete the test and press submit to get your Political Alignment results</Writing>
 				<Writing>Each question is a statement. Select whether you mostly agree, disagree or are neutral towards it</Writing>
-				<Writing>Any questions left blank will be set to neutral</Writing>
+				<Writing>Any unanswered questions will be set to neutral</Writing>
 				<Writing>There are 39 questions and the test should take 2 - 15 minutes</Writing>
 			</WritingBlock>
 			<AllQuestions>
@@ -130,9 +130,9 @@ export function QuizPage(props) {
 					<CompleteQuestionBox key = {index}>{item}</CompleteQuestionBox>
 				))}
 			</AllQuestions>
-			<SubmitQuiz onClick = {() => ClickedSubmit(selectedOption, props.pageStateChange, incompleteQuestions, changeIncompleteQuestions)}>Submit Answers</SubmitQuiz>
-			{incompleteQuestions && <ErrorMessage>There are unanswered questions! You can answer them or press submit answers again to set them to neutral and get your cube</ErrorMessage>}
-			{incompleteQuestions && <ErrorMessage>The questions that have not been answered are: {incompleteQuestionsString}</ErrorMessage>}
+			<SubmitQuiz onClick = {() => ClickedSubmit(selectedOption, props.pageStateChange)}>Submit Answers</SubmitQuiz>
+			{/* {incompleteQuestions && <ErrorMessage>There are unanswered questions! You can answer them or press submit answers again to set them to neutral and get your cube</ErrorMessage>}
+			{incompleteQuestions && <ErrorMessage>The questions that have not been answered are: {incompleteQuestionsString}</ErrorMessage>} */}
 		</QuizBox>
 	)
 }
@@ -156,22 +156,22 @@ function FormatQuestions (selectedOption, handleSelectionChange) {
 	return formattedQuestions
 }
 
-function ClickedSubmit(answers, pageStateChange, incompleteQuestions, setIncompleteQuestions) {
-	let questionList = []
-	for (let answer in answers) {
-		if (answers[answer] === 0) {
-			questionList.push(answer)
-			if (questionList.length === 1) {
-				incompleteQuestionsString = String(parseInt(answer) + 1)
-			} else {
-				incompleteQuestionsString = incompleteQuestionsString + ', ' + String(parseInt(answer) + 1)
-			}
-		}
-	}
-	if (questionList.length > 0 && !incompleteQuestions) {
-		setIncompleteQuestions(true)
-		return
-	}
+function ClickedSubmit(answers, pageStateChange) {
+	// let questionList = []
+	// for (let answer in answers) {
+	// 	if (answers[answer] === 0) {
+	// 		questionList.push(answer)
+	// 		if (questionList.length === 1) {
+	// 			incompleteQuestionsString = String(parseInt(answer) + 1)
+	// 		} else {
+	// 			incompleteQuestionsString = incompleteQuestionsString + ', ' + String(parseInt(answer) + 1)
+	// 		}
+	// 	}
+	// }
+	// if (questionList.length > 0 && !incompleteQuestions) {
+	// 	setIncompleteQuestions(true)
+	// 	return
+	// }
 	ConfigureResults(answers)
 	pageStateChange('results')
 }
