@@ -18,6 +18,7 @@ const ResultsBlock = styled('div')({
 const PlotBlock = styled('div')({
 	marginLeft: 'auto',
 	marginRight: 'auto',
+	zIndex: '1',
 })
 
 const SliderDiv = styled('div')({
@@ -42,7 +43,10 @@ const WritingBlock = styled('div')({
 const InstructionHeading = styled('p')({
 	color: '#0A66C2',
 	fontSize: '18px',
-	fontWeight: 'bold'
+	fontWeight: 'bold',
+	'@media (min-width: 600px)': {
+		fontSize: '25px'
+	}
 })
 
 const InstructionHeadingTop = styled(InstructionHeading)({
@@ -167,7 +171,6 @@ function CreateCube(props) {
 			displayModeBar: false,
 			responsive: true
 		}}
-		onRelayout={(figure) => console.log(figure)}
 		/>
 	);
 }

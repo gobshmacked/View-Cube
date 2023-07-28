@@ -3,17 +3,36 @@
 
 export const questions = [
 	{
-		question: `The government should tax it's citizens`,
-		x: -2,
+		question: 'Healthcare should be freely provided by the state',
+		x: -1,
 		y: 0,
 		z: 0,
 		subheading: 'Tax and Government Spending'
 	},
 	{
-		question: 'The government should apply a progressive income tax (higher earners are taxed at a higher rate)',
+		question: 'Education should be freely provided by the state',
 		x: -1,
 		y: 0,
 		z: 0
+	},
+	{
+		question: 'All businesses should be owned and run by the state',
+		x: -2,
+		y: 0,
+		z: 0
+	},
+	{
+		question: `The government should tax it's citizens`,
+		x: -2,
+		y: 0,
+		z: 0,
+	},
+	{
+		question: 'The government should apply a progressive income tax',
+		x: -1,
+		y: 0,
+		z: 0,
+		extraInfo: 'higher earners are taxed at a higher rate'
 	},
 	{
 		question: 'The government should apply a progressive land tax',
@@ -34,10 +53,11 @@ export const questions = [
 		z: 0
 	},
 	{
-		question: 'A universal basic income is a good idea (Everyone is given money from the government)',
+		question: 'A universal basic income is a good idea',
 		x: -1,
 		y: 0,
-		z: 0
+		z: 0,
+		extraInfo: 'Everyone is given money from the government'
 	},
 	{
 		question: 'The state should provide everything for free',
@@ -58,28 +78,11 @@ export const questions = [
 		z: 0
 	},
 	{
-		question: 'There should be tariffs on products imported from overseas (tax on imported products)',
+		question: 'There should be tariffs on products imported from overseas',
 		x: -1,
 		y: 0,
-		z: 0
-	},
-	{
-		question: 'All businesses should be owned and run by the state',
-		x: -2,
-		y: 0,
-		z: 0
-	},
-	{
-		question: 'Healthcare should be freely provided by the state',
-		x: -1,
-		y: 0,
-		z: 0
-	},
-	{
-		question: 'Education should be freely provided by the state',
-		x: -1,
-		y: 0,
-		z: 0
+		z: 0,
+		extraInfo: 'tax on imported products'
 	},
 	{
 		question: 'The free market should allocate resources rather than the government',

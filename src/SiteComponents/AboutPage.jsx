@@ -36,7 +36,10 @@ export const Writing = styled('p')({
 	color: 'whitesmoke',
 	marginLeft: '2%',
 	textAlign: 'left',
-	fontSize: '18px'
+	fontSize: '18px',
+	'@media (min-width: 600px)': {
+		fontSize: '24px'
+	}
 })
 
 export const LineSeperator = styled('hr')({

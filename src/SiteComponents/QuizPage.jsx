@@ -33,7 +33,9 @@ const QuestionAnswerBox = styled('div')({
 const Question = styled('p')({
 	color: 'whitesmoke',
 	fontWeight: 'bold',
-
+	'@media (min-width: 600px)': {
+		fontSize: '24px'
+	}
 })
 
 const Answers = styled('div')({
@@ -66,6 +68,9 @@ const Subheading = styled('p')({
 	fontWeight: 'bold',
 	paddingTop: '10px',
 	paddingBottom: '10px',
+	'@media (min-width: 600px)': {
+		fontSize: '30px'
+	}
 })
 
 const Break = styled('hr')({
@@ -84,6 +89,9 @@ const InstructionHeading = styled('p')({
 	color: '#3F8CFF',
 	fontSize: '27px',
 	fontWeight: 'bold',
+	'@media (min-width: 600px)': {
+		fontSize: '35px'
+	}
 })
 
 const InstructionHeadingTop = styled(InstructionHeading)({
@@ -94,7 +102,10 @@ const Writing = styled('p')({
 	color: 'whitesmoke',
 	marginLeft: '10%',
 	textAlign: 'left',
-	fontSize: '18px'
+	fontSize: '18px',
+	'@media (min-width: 600px)': {
+		fontSize: '24px'
+	}
 })
 
 export function QuizPage(props) {

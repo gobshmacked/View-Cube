@@ -35,7 +35,7 @@ function CalculateResults(userInput) {
 	finalX = tempX.toFixed(1)
 	finalY = tempY.toFixed(1)
 	finalZ = tempZ.toFixed(1)
-	SaveResults(finalX, finalY, finalZ)
+	//SaveResults(finalX, finalY, finalZ)
 }
 
 let SaveResults = (fx, fy, fz) => {

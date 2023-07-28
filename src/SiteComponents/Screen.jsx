@@ -46,7 +46,7 @@ export function Screen () {
 				</HeaderDiv>
 				<SideBarMainPageDiv>
 					<SideBar pageStateChange = {newPageState} currentPage = {page} sideBarShow = {sideBarShow} sideBarShowChange = {newSideBarShow}/>
-					{<MainPage currentPage = {page} pageStateChange = {newPageState}/>}
+					{<MainPage currentPage = {page} pageStateChange = {newPageState} sideBarShow = {sideBarShow}/>}
 				</SideBarMainPageDiv>
 			</AllElementsWrap>
    		</>
