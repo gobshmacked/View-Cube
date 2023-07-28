@@ -9,12 +9,12 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(cors());
+// app.use(cors());
 
-const options = {
-	key: fs.readFileSync('./auth/key.pem'),      // Replace with the path to your private key file
-	cert: fs.readFileSync('./auth/cert.pem') // Replace with the path to your certificate file
-};
+// const options = {
+// 	key: fs.readFileSync('./auth/key.pem'),      // Replace with the path to your private key file
+// 	cert: fs.readFileSync('./auth/cert.pem') // Replace with the path to your certificate file
+// };
 
 const httpsServer = https.createServer(options, app);
 
