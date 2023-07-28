@@ -41,22 +41,22 @@ function CalculateResults(userInput) {
 
 let SaveResults = (fx, fy, fz) => {
 	let finalResults = {
-		x: fx,
-		y: fy,
-		z: fz
+		'x': fx,
+		'y': fy,
+		'z': fz
 	}
-	fetch((`https://localhost:8000` + '/results'), {
-            method: 'POST',
+	fetch((`http://localhost:8000` + '/results'), {
+            method: 'post',
             headers: {
                 'Content-type': 'application/json',
             },
             body: JSON.stringify(finalResults)
         })
         .then(response => response.json())
-		
         .then(data => {
         })
         .catch(error => {
+			console.log("error", error)
         }
 	);
 }

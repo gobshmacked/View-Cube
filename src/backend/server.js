@@ -1,5 +1,5 @@
 const express = require("express");
-const { Application, Request, Response } = require("express");
+//const { Application, Request, Response } = require("express");
 const bodyParser = require("body-parser");
 const cors = require('cors')
 
@@ -17,13 +17,25 @@ app.get("/", (req, res) => {
   res.send("Healthy");
 });
 
-app.post('http://localhost:8000/results'), (req, res) => {
+app.get("/results", (req, res) => {
+	yeet = JSON.stringify('yeet')
+	res.send(yeet);
+	console.log("HERENO")
+});
+
+app.post("/results", (req, res) => {
 	const { x, y, z } = req.body;
-	console.log(x,y,z)
-}
+	console.log(x, y, z)
+});
+
+app.use((err, req, res, next) => {
+	console.error(err.stack);
+	res.status(500).send('Something went wrong!');
+  });
+  
 
 const PORT = process.env.PORT || 8000;
 
-app.listen(PORT, HOST, () => {
+app.listen(PORT, () => {
   console.log(`Server is running on PORT ${PORT}`);
 });
