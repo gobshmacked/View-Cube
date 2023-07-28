@@ -1,4 +1,6 @@
 const express = require("express");
+const https = require('https');
+const fs = require('fs');
 //const { Application, Request, Response } = require("express");
 const bodyParser = require("body-parser");
 const cors = require('cors')
@@ -10,18 +12,23 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors());
 
-const HOST = 'localhost'
+const options = {
+	key: fs.readFileSync('./auth/key.pem'),      // Replace with the path to your private key file
+	cert: fs.readFileSync('./auth/cert.pem') // Replace with the path to your certificate file
+};
 
+
+const HOST = 'localhost'
 
 app.get("/", (req, res) => {
   res.send("Healthy");
 });
 
-app.get("/results", (req, res) => {
-	yeet = JSON.stringify('yeet')
-	res.send(yeet);
-	console.log("HERENO")
-});
+// app.get("/results", (req, res) => {
+// 	yeet = JSON.stringify('yeet')
+// 	res.send(yeet);
+// 	console.log("HERENO")
+// });
 
 app.post("/results", (req, res) => {
 	const { x, y, z } = req.body;
