@@ -11,6 +11,9 @@ const SideBarDiv = styled('div')({
 	left: '0',
 	width: '10%',
 	height: '100vh',
+	'@media (max-width: 600px)': {
+		width: '30%'
+	}
 })
 
 const SideBarDivHide = styled('div')({

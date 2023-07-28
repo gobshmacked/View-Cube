@@ -1,6 +1,6 @@
 import React from 'react'
 import { styled } from '@mui/material'
-import {WritingBlock, InstructionHeading, InstructionHeading2, Writing} from './AboutPage'
+import {WritingBlock, InstructionHeading2, Writing} from './AboutPage'
 
 const ContactWrapper = styled('div')({
 	display: 'flex',
@@ -8,6 +8,9 @@ const ContactWrapper = styled('div')({
 	width: '50%',
 	marginLeft: 'auto',
 	marginRight: 'auto',
+	'@media (max-width: 600px)': {
+		width: '90%'
+	}
 })
 
 export function ContactPage() {

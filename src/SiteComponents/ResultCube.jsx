@@ -1,7 +1,7 @@
 import React from 'react'
 import Plot from 'react-plotly.js';
 import { styled } from '@mui/material'
-import Slider, { SliderThumb, SliderValueLabelProps } from '@mui/material/Slider';
+import Slider from '@mui/material/Slider';
 import { finalX, finalY, finalZ } from './ConfigureResults.js'
 
 const ResultsBlock = styled('div')({
@@ -9,7 +9,15 @@ const ResultsBlock = styled('div')({
 	flexDirection: 'column',
 	marginLeft: 'auto',
 	marginRight: 'auto',
-	background: '#FFFFFF'
+	background: '#FFFFFF',
+	'@media (max-width: 600px)': {
+		width: '100%',
+	}
+})
+
+const PlotBlock = styled('div')({
+	marginLeft: 'auto',
+	marginRight: 'auto',
 })
 
 const SliderDiv = styled('div')({
@@ -39,10 +47,18 @@ const InstructionHeading = styled('p')({
 
 const InstructionHeadingTop = styled(InstructionHeading)({
 	marginLeft: '13%',
+	'@media (max-width: 600px)': {
+		marginLeft: '6%',
+		marginRight: '6%'
+	}
 })
 
 const Writing = styled('p')({
 	marginLeft: '13%',
+	'@media (max-width: 600px)': {
+		marginLeft: '6%',
+		marginRight: '6%'
+	}
 })
 
 const BlackWriting = styled('p')({
@@ -66,7 +82,7 @@ export function ResultCube () {
 			<LineSeperator/>
 			<br/><br/>
 			<InstructionHeading>Political Views Map</InstructionHeading>
-			<Create2DPlot/>
+			<PlotBlock><Create2DPlot/></PlotBlock>
 			<BlackWriting>{finalX},{finalY}</BlackWriting>
 			<br/><br/><br/>
 			<LineSeperator/>
@@ -91,6 +107,13 @@ export function ResultCube () {
 	}
 	
 function CreateCube(props) {
+	let finalHeight = window.innerHeight * (6/7)
+	let finalWidth = window.innerHeight * (6/7)
+	let finalZ = 2.5
+	if (window.innerWidth < 600) {
+		finalHeight = window.innerWidth * 1.1
+		finalWidth = window.innerWidth * 1.1
+	}
 	return (
 		<Plot
 		data={[
@@ -104,8 +127,8 @@ function CreateCube(props) {
 		},
 		]}
 		layout={{
-			height: window.innerHeight * (6/7),
-			width: window.innerHeight * (6/7),
+			height: finalHeight,
+			width: finalWidth,
 			showlegend: false,
 			range: [-10, 10],
 			scene: {
@@ -150,6 +173,12 @@ function CreateCube(props) {
 }
 
 function Create2DPlot() {
+	let finalHeight = window.innerHeight * (6/7)
+	let finalWidth = window.innerHeight * (6/7)
+	if (window.innerWidth < 600) {
+		finalHeight = window.innerWidth
+		finalWidth = window.innerWidth
+	}
 	return (
 		<Plot
 		data={[
@@ -158,12 +187,12 @@ function Create2DPlot() {
 			y: [finalY], 
 			mode: 'markers', 
 			type:'scatter',
-			marker: {size: 14, color: 'white'},
+			marker: {size: 14, color: 'black'},
 		},
 		]}
 		layout={{
-			height: window.innerHeight * (6/7),
-			width: window.innerHeight * (6/7),
+			height: finalHeight,
+			width: finalWidth,
 			showlegend: false,
 			xaxis: {
 				range: [-10, 10],

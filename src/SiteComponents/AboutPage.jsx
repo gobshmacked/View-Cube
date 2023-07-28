@@ -6,7 +6,10 @@ const AboutWrapper = styled('div')({
 	flexDirection: 'column',
 	width: '50%',
 	marginLeft: 'auto',
-	marginRight: 'auto'
+	marginRight: 'auto',
+	'@media (max-width: 600px)': {
+		width: '90%'
+	}
 })
 
 export const WritingBlock = styled('div')({

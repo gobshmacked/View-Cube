@@ -1,4 +1,3 @@
-import React from 'react'
 import { questions } from '../questions.js'
 export let finalX
 export let finalY
@@ -45,7 +44,7 @@ let SaveResults = (fx, fy, fz) => {
 		'y': fy,
 		'z': fz
 	}
-	fetch((`http://localhost:8000` + '/results'), {
+	fetch((`http://localhost:8000/results`), {
             method: 'post',
             headers: {
                 'Content-type': 'application/json',

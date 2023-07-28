@@ -4,14 +4,15 @@ import { questions } from '../questions.js'
 import { ConfigureResults } from './ConfigureResults.js'
 import './styles/QuizPage.css'
 
-let incompleteQuestionsString = ''
-
 const QuizBox = styled('div')({
 	display: 'flex',
 	flexDirection: 'column',
 	marginLeft: 'auto',
 	marginRight: 'auto',
-	width: '40%'
+	width: '40%',
+	'@media (max-width: 600px)': {
+		width: '90%'
+	}
 })
 
 const AllQuestions = styled('div')({
@@ -56,10 +57,6 @@ const SubmitQuiz = styled('button')({
 	'&:hover': {
 		background: '#3F8CFF'
 	}
-})
-
-const ErrorMessage = styled('p')({
-	color: 'red'
 })
 
 const Subheading = styled('p')({

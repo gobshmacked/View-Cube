@@ -1,7 +1,6 @@
 const express = require("express");
 const https = require('https');
 const fs = require('fs');
-//const { Application, Request, Response } = require("express");
 const bodyParser = require("body-parser");
 const cors = require('cors')
 
@@ -17,18 +16,13 @@ const options = {
 	cert: fs.readFileSync('./auth/cert.pem') // Replace with the path to your certificate file
 };
 
+const httpsServer = https.createServer(options, app);
 
 const HOST = 'localhost'
 
 app.get("/", (req, res) => {
   res.send("Healthy");
 });
-
-// app.get("/results", (req, res) => {
-// 	yeet = JSON.stringify('yeet')
-// 	res.send(yeet);
-// 	console.log("HERENO")
-// });
 
 app.post("/results", (req, res) => {
 	const { x, y, z } = req.body;

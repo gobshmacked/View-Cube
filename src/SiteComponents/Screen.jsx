@@ -1,5 +1,4 @@
 import React from 'react'
-import { ResultCube } from './ResultCube'
 import { SideBar } from './SideBar'
 import { MainPage } from './MainPage'
 import { styled } from '@mui/material'
@@ -31,10 +30,7 @@ const AllElementsWrap = styled('div')({
 
 export function Screen () {
 	const [page, setPage] = React.useState('quiz')
-	const [sideBarShow, setSideBarShow] = React.useState('show')
-	if (window.innerWidth < 600 && sideBarShow == 'show') {
-		setSideBarShow('hide')
-	}
+	const [sideBarShow, setSideBarShow] = React.useState('hide')
 	function newPageState (newPage) {
 		setPage(newPage)
 		window.scrollTo(0,0);
@@ -52,7 +48,6 @@ export function Screen () {
 					<SideBar pageStateChange = {newPageState} currentPage = {page} sideBarShow = {sideBarShow} sideBarShowChange = {newSideBarShow}/>
 					{<MainPage currentPage = {page} pageStateChange = {newPageState}/>}
 				</SideBarMainPageDiv>
-				{/* <ResultCube/> */}
 			</AllElementsWrap>
    		</>
   	)
