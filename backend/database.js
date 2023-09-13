@@ -1,10 +1,10 @@
-import mysql from 'mysql'
+let mysql = require('mysql')
 
-export const StoreQuizData = (x,y,z,datetime) => {
+const StoreQuizData = (x,y,z,datetime) => {
 	let connection = mysql.createConnection({
 		host: 'https://politicalalignment.org',
 		database: 'politi14_userData',
-		user: 'gobshmacked',
+		user: 'politi14',
 		password: '6x3!]+rC.bUA'
 	})
 
@@ -21,3 +21,5 @@ export const StoreQuizData = (x,y,z,datetime) => {
 	connection.query(insertStatement);
 	connection.end();
 }
+
+module.exports.StoreQuizData = StoreQuizData;

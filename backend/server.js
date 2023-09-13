@@ -1,7 +1,7 @@
-import { StoreQuizData } from "./database.js";
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
+const { StoreQuizData } = require("./database.js");
+let express = require('express');
+let cors = require('cors');
+let dotenv = require('dotenv');
 dotenv.config();
 
 const app = express();
@@ -30,7 +30,7 @@ app.post("/results", (req, res) => {
 app.use((err, req, res, next) => {
 	console.error(err.stack);
 	res.status(500).send('Something went wrong!');
-  });
+});
   
 
 const PORT = process.env.PORT || 8000;
