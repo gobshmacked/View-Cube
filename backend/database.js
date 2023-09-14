@@ -2,9 +2,9 @@ let mysql = require('mysql')
 
 const StoreQuizData = (x,y,z,datetime) => {
 	let connection = mysql.createConnection({
-		host: 'https://politicalalignment.org',
+		host: 'politicalalignment.org',
 		database: 'politi14_userData',
-		user: 'politi14',
+		user: 'politi14_gobshmacked',
 		password: '6x3!]+rC.bUA'
 	})
 
@@ -13,10 +13,9 @@ const StoreQuizData = (x,y,z,datetime) => {
 			console.error('Error connecting: ' + err.stack);
 			return;
 		}
-		console.log('Connected as id ' + connection.threadId);
 	});
 
-	let insertStatement = `INSERT INTO QuizData (x, y, z, completionTime) VALUES (${x}, ${y}, ${z}, ${datetime})`
+	let insertStatement = `INSERT INTO QuizData (x, y, z, completionTime) VALUES (${x}, ${y}, ${z}, ${datetime.getTime()})`
 
 	connection.query(insertStatement);
 	connection.end();

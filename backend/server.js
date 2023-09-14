@@ -21,10 +21,8 @@ app.get("/", (req, res) => {
 });
 
 app.post("/results", (req, res) => {
-	console.log('in server backend')
 	const { x, y, z } = req.body;
-	// StoreQuizData(x,y,z,new Date())
-	console.log(x,y,z,new Date())
+	StoreQuizData(x,y,z,new Date())
 });
 
 app.use((err, req, res, next) => {
