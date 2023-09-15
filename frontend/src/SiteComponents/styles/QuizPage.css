@@ -1,5 +1,5 @@
 .selected {
-	background: #0A66C2;
+	background: #22305B;
 	color: white;
 	font-weight: bold;
 	padding-left: 20px;
@@ -12,7 +12,7 @@
 }
 
 .normalButton {
-	background: #CCCCCC;
+	background: #BCDBFF;
 	color: black;
 	font-weight: bold;
 	padding-left: 20px;
@@ -25,12 +25,15 @@
 }
 
 .normalButton:hover {
-	background: #0A66C2;
+	background: #22305B;
 	color: white;
 }
 
 @media (min-width: 600px) {
 	.normalButton {
+		font-size: 20px
+	}
+	.selected {
 		font-size: 20px
 	}
 }

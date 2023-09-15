@@ -41,9 +41,6 @@ export function Screen () {
   	return (
     	<>
 			<AllElementsWrap>
-				<HeaderDiv>
-					<HeaderDivText>Political Alignment</HeaderDivText>
-				</HeaderDiv>
 				<SideBarMainPageDiv>
 					<SideBar pageStateChange = {newPageState} currentPage = {page} sideBarShow = {sideBarShow} sideBarShowChange = {newSideBarShow}/>
 					{<MainPage currentPage = {page} pageStateChange = {newPageState} sideBarShow = {sideBarShow}/>}

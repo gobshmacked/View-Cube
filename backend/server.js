@@ -23,6 +23,7 @@ app.get("/", (req, res) => {
 app.post("/results", (req, res) => {
 	const { x, y, z } = req.body;
 	StoreQuizData(x,y,z,new Date())
+	res.send()
 });
 
 app.use((err, req, res, next) => {

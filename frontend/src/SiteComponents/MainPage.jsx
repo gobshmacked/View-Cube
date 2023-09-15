@@ -4,10 +4,11 @@ import { QuizPage } from './QuizPage'
 import { ResultCube } from './ResultCube'
 import { AboutPage } from './AboutPage'
 import { ContactPage } from './ContactPage'
+import './styles/fonts.css'
 
 const Page = styled('div')({
 	display: 'flex',
-	background: '#32373D',
+	background: '#DEEFFF',
 	height: '100'
 })
 

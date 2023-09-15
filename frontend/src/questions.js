@@ -7,7 +7,7 @@ export const questions = [
 		x: -1,
 		y: 0,
 		z: 0,
-		subheading: 'Tax and Government Spending'
+		subheading: 'Economics'
 	},
 	{
 		question: 'Education should be freely provided by the state',
@@ -219,7 +219,7 @@ export const questions = [
 		z: -1
 	},
 	{
-		question: 'If something is legal than it is always right to do',
+		question: 'If something is legal then it is always right to do',
 		x: 0,
 		y: 1,
 		z: 1

@@ -9,9 +9,9 @@ const ResultsBlock = styled('div')({
 	flexDirection: 'column',
 	marginLeft: 'auto',
 	marginRight: 'auto',
-	background: '#FFFFFF',
+	background: '#DEEFFF',
 	'@media (max-width: 600px)': {
-		width: '100%',
+		width: '90%',
 	}
 })
 
@@ -28,6 +28,8 @@ const SliderDiv = styled('div')({
 })
 
 const SliderLabel = styled('p')({
+	color: '#000000',
+	fontFamily: 'Fredoka',
 	marginRight: '20px',
 	marginLeft: '20px',
 })
@@ -41,37 +43,33 @@ const WritingBlock = styled('div')({
 })
 
 const InstructionHeading = styled('p')({
-	color: '#0A66C2',
-	fontSize: '18px',
-	fontWeight: 'bold',
-	'@media (min-width: 600px)': {
-		fontSize: '25px'
+	color: '#22305B',
+	fontFamily: 'Staatliches',
+	fontSize: '25px',
+	'@media (max-width: 600px)': {
+		fontSize: '23px'
 	}
 })
 
 const InstructionHeadingTop = styled(InstructionHeading)({
-	marginLeft: '13%',
+	marginLeft: 'auto',
+	marginRight: 'auto',
+	marginBottom: '0px',
+	fontSize: '30px',
 	'@media (max-width: 600px)': {
-		marginLeft: '6%',
-		marginRight: '6%'
-	}
-})
-
-const Writing = styled('p')({
-	marginLeft: '13%',
-	'@media (max-width: 600px)': {
-		marginLeft: '6%',
-		marginRight: '6%'
+		marginLeft: 'auto',
+		marginRight: 'auto'
 	}
 })
 
 const BlackWriting = styled('p')({
-
+	color: '#000000',
+	fontFamily: 'Fredoka',
 })
 
-const LineSeperator = styled('hr')({
-	width: '80%',
-	size: '10'
+const ResultTile = styled('div')({
+	background: '#D1E6FF',
+	borderRadius: '20px',
 })
 
 export function ResultCube () {
@@ -80,31 +78,34 @@ export function ResultCube () {
 			<br/>
 			<WritingBlock>
 				<InstructionHeadingTop>Results</InstructionHeadingTop>
-				<Writing>Scroll down to view your results from the Political Alignment Test</Writing>
 			</WritingBlock>
-			<br/>
-			<LineSeperator/>
-			<br/><br/>
-			<InstructionHeading>Political Views Map</InstructionHeading>
-			<PlotBlock><Create2DPlot/></PlotBlock>
-			<BlackWriting>{finalX},{finalY}</BlackWriting>
-			<br/><br/><br/>
-			<LineSeperator/>
-			<br/><br/><br/><br/><br/><br/>
-			<InstructionHeading>Philosophical Views Slider</InstructionHeading>
-			<br/><br/><br/>
-			<BlackWriting>{finalZ}</BlackWriting>
-			<SliderDiv>
-				<SliderLabel>Utilitarianism -10</SliderLabel>
-				<PrettoSlider defaultValue = {CalculateSliderNumber()}/>
-				<SliderLabel>Deontology 10</SliderLabel>
-			</SliderDiv>
-			<br/><br/><br/><br/><br/><br/><br/><br/>
-			<LineSeperator/>
-			<br/><br/><br/>
-			<InstructionHeading>Your Political Alignment</InstructionHeading>
-			<BlackWriting>{finalX},{finalY},{finalZ}</BlackWriting>
-    		<CreateCube/>
+				<br/>
+			<ResultTile>
+				<InstructionHeading>Your Political Views Map</InstructionHeading>
+				<PlotBlock><Create2DPlot/></PlotBlock>
+				<BlackWriting>{'Economic Scale: '}{finalX}</BlackWriting>
+				<BlackWriting>{'Social Scale: '}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{finalY}</BlackWriting>
+			</ResultTile>
+				<br/><br/><br/>
+			<ResultTile>
+				<InstructionHeading>Your Moral Views Slider</InstructionHeading>
+				<BlackWriting>{'Morality Scale:'}&nbsp;{finalZ}</BlackWriting>
+				<SliderDiv>
+					<SliderLabel>Utilitarianism -10</SliderLabel>
+					<PrettoSlider defaultValue = {CalculateSliderNumber()}/>
+					<SliderLabel>Deontology 10</SliderLabel>
+				</SliderDiv>
+			</ResultTile>
+				<br/><br/><br/>
+			<ResultTile>
+				<InstructionHeading>Your Political Alignment Cube</InstructionHeading>
+				<BlackWriting>{'Economic Scale: '}{finalX}</BlackWriting>
+				<BlackWriting>{'Social Scale: '}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{finalY}</BlackWriting>
+				<BlackWriting>{'Morality Scale: '}&nbsp;&nbsp;&nbsp;{finalZ}</BlackWriting>
+				<CreateCube/>
+				<br/><br/><br/><br/>
+			</ResultTile>
+			<br/><br/><br/><br/>
 		</ResultsBlock>
 		
 		)
@@ -116,7 +117,7 @@ function CreateCube(props) {
 	let finalZ = 2.5
 	if (window.innerWidth < 600) {
 		finalHeight = window.innerWidth * 1.1
-		finalWidth = window.innerWidth * 1.1
+		finalWidth = window.innerWidth * 0.9
 	}
 	return (
 		<Plot
@@ -179,8 +180,8 @@ function Create2DPlot() {
 	let finalHeight = window.innerHeight * (6/7)
 	let finalWidth = window.innerHeight * (6/7)
 	if (window.innerWidth < 600) {
-		finalHeight = window.innerWidth
-		finalWidth = window.innerWidth
+		finalHeight = window.innerWidth 
+		finalWidth = window.innerWidth * 9/10
 	}
 	return (
 		<Plot

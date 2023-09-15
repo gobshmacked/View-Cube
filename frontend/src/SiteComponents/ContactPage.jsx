@@ -18,8 +18,9 @@ export function ContactPage() {
 		<ContactWrapper>
 			<WritingBlock>
 				<InstructionHeading2>Contact</InstructionHeading2>
-				<Writing>If you want to leave feedback or report bugs feel free to send an email to:</Writing>
-				<Writing>politicalcompasstest@gmail.com</Writing>
+				<Writing>If you want to leave feedback or report bugs send an email to:</Writing>
+				<Writing>politicalalignment@gmail.com</Writing>
+				<Writing>All feedback is greatly appreciated!</Writing>
 				<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 			</WritingBlock>
 		</ContactWrapper>
