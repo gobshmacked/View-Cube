@@ -44,8 +44,6 @@ function CalculateResults(userInput) {
 
 let SaveResults = (fx, fy, fz) => {
 	let link = `${backendURL}/results`
-	console.log('link:', link)
-	console.log('results:', fx,fy,fz)
 	let finalResults = {
 		x: fx,
 		y: fy,

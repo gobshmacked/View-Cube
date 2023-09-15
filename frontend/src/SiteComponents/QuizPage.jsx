@@ -129,7 +129,7 @@ const Title1 = styled('p')({
 		fontSize: '3vw'
 	},
 	'@media (max-width: 500px)': {
-		fontSize: '4vw'
+		fontSize: '6vw'
 	},
 })
 
@@ -140,7 +140,7 @@ const Title2 = styled('p')({
 		fontSize: '5.6vw'
 	},
 	'@media (max-width: 500px)': {
-		fontSize: '6.4vw'
+		fontSize: '9.5vw'
 	},
 })
 
@@ -151,7 +151,7 @@ const Title3 = styled('p')({
 		fontSize: '3vw'
 	},
 	'@media (max-width: 500px)': {
-		fontSize: '4vw'
+		fontSize: '6vw'
 	},
 })
 
@@ -164,9 +164,9 @@ const TitleLogo = styled('img')({
 		height: '5vw',
 	},
 	'@media (max-width: 500px)': {
-		marginTop: '4.1px',
-		width: '5.238vw',
-		height: '5.5vw',
+		marginTop: '5px',
+		width: '6.8vw',
+		height: '8.1vw',
 	}
 })
 
