@@ -1,6 +1,6 @@
 let mysql = require('mysql')
 
-const StoreQuizData = (x,y,z,datetime) => {
+const StoreQuizData = (x,y,u,r,datetime) => {
 	let connection = mysql.createConnection({
 		host: 'politicalalignment.org',
 		database: 'politi14_userData',
@@ -15,7 +15,7 @@ const StoreQuizData = (x,y,z,datetime) => {
 		}
 	});
 
-	let insertStatement = `INSERT INTO QuizData (x, y, z, completionTime) VALUES (${x}, ${y}, ${z}, ${datetime.getTime()})`
+	let insertStatement = `INSERT INTO QuizData (x, y, u, r, completionTime) VALUES (${x}, ${y}, ${u}, ${r}, ${datetime.getTime()})`
 
 	connection.query(insertStatement);
 	connection.end();

@@ -69,7 +69,7 @@ export function AboutPage() {
 				<Writing>The Political Alignment Test measures and places you on 3 scales:</Writing>
 				<Writing>1. The Economic scale measured on the Left-Right axis</Writing>
 				<Writing>2. The Social scale measured on the Libertarian-Authoritarian axis</Writing>
-				<Writing>3. The Morality scale measured on the Utilitarianism-Deontology axis</Writing>
+				<Writing>3. Either the Rational Egoism scale or Utilitarianism scale depending on which one your answers more closely align with</Writing>
 				<br/><br/>
 				<LineSeperator/>
 				<br/><br/>
@@ -78,8 +78,8 @@ export function AboutPage() {
 				<Writing><Bold>Right:</Bold> Refers to right wing views characterised by decreased levels of government intervention in the economy, often in the form of less taxes and limited restrictions on the free market</Writing>
 				<Writing><Bold>Libertarian:</Bold> Refers to views characterised by fewer restrictions on individual rights, often in the form of fewer laws</Writing>
 				<Writing><Bold>Authoritarian:</Bold> Refers to views characterised by greater restrictions on indiviudal rights, often in the form of more restrictive laws and greater punishment for wrongdoing</Writing>
-				<Writing><Bold>Utilitarianism:</Bold> The view that producing the greatest good for the greatest number is the goal, and actions that align with this goal are good and ones that don't are bad</Writing>
-				<Writing><Bold>Deontology:</Bold> The view that actions are good if they follow a set of rules and bad if they break these rules</Writing>
+				<Writing><Bold>Utilitarianism:</Bold> The idea that producing the greatest good for the greatest number is the goal, and actions that align with this goal are good and ones that don't are bad</Writing>
+				<Writing><Bold>Rational Egoism:</Bold> The idea that maximising ones own self interests is the right thing to do</Writing>
 				<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 			</WritingBlock>
 		</AboutWrapper>
