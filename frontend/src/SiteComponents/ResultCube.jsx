@@ -2,7 +2,7 @@ import React from 'react'
 import Plot from 'react-plotly.js';
 import { styled } from '@mui/material'
 import Slider from '@mui/material/Slider';
-import { finalX, finalY, finalZ } from './ConfigureResults.js'
+import { finalX, finalY, finalZ, finalU, finalR } from './ConfigureResults.js'
 
 const ResultsBlock = styled('div')({
 	display: 'flex',
@@ -70,6 +70,7 @@ const BlackWriting = styled('p')({
 const ResultTile = styled('div')({
 	background: '#D1E6FF',
 	borderRadius: '20px',
+	paddingBottom: '10px'
 })
 
 export function ResultCube () {
@@ -88,21 +89,40 @@ export function ResultCube () {
 			</ResultTile>
 				<br/><br/><br/>
 			<ResultTile>
-				<InstructionHeading>Your Moral Views Slider</InstructionHeading>
-				<BlackWriting>{'Morality Scale:'}&nbsp;{finalZ}</BlackWriting>
+				<InstructionHeading>Utilitarianism Consistency Scale</InstructionHeading>
+				<BlackWriting>{'Utilitarianism Scale:'}&nbsp;{finalU}</BlackWriting>
 				<SliderDiv>
-					<SliderLabel>Utilitarianism -10</SliderLabel>
-					<PrettoSlider defaultValue = {CalculateSliderNumber()}/>
-					<SliderLabel>Deontology 10</SliderLabel>
+					<SliderLabel>-10</SliderLabel>
+					<PrettoSlider defaultValue = {CalculateSliderNumber(finalU)}/>
+					<SliderLabel>10</SliderLabel>
+				</SliderDiv>
+			</ResultTile>
+				<br/><br/><br/>
+				<ResultTile>
+				<InstructionHeading>Rational Egoism Consistency Scale</InstructionHeading>
+				<BlackWriting>{'Rational Egoism Scale:'}&nbsp;{finalR}</BlackWriting>
+				<SliderDiv>
+					<SliderLabel>-10</SliderLabel>
+					<PrettoSlider defaultValue = {CalculateSliderNumber(finalR)}/>
+					<SliderLabel>10</SliderLabel>
 				</SliderDiv>
 			</ResultTile>
 				<br/><br/><br/>
 			<ResultTile>
-				<InstructionHeading>Your Political Alignment Cube</InstructionHeading>
+				<InstructionHeading>Your Political and Utilitarianism Alignment</InstructionHeading>
 				<BlackWriting>{'Economic Scale: '}{finalX}</BlackWriting>
 				<BlackWriting>{'Social Scale: '}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{finalY}</BlackWriting>
-				<BlackWriting>{'Morality Scale: '}&nbsp;&nbsp;&nbsp;{finalZ}</BlackWriting>
-				<CreateCube/>
+				<BlackWriting>{'Utilitarianism Scale: '}&nbsp;&nbsp;&nbsp;{finalU}</BlackWriting>
+				<CreateCube philosophyType = {'Util'} axis3 = {finalU}/>
+				<br/><br/><br/><br/>
+			</ResultTile>
+			<br/><br/><br/>
+			<ResultTile>
+				<InstructionHeading>Your Political and rational egoism alignment</InstructionHeading>
+				<BlackWriting>{'Economic Scale: '}{finalX}</BlackWriting>
+				<BlackWriting>{'Social Scale: '}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{finalY}</BlackWriting>
+				<BlackWriting>{'Rational Egoism Scale: '}&nbsp;&nbsp;&nbsp;{finalR}</BlackWriting>
+				<CreateCube philosophyType = {'R Egoism'} axis3 = {finalR}/>
 				<br/><br/><br/><br/>
 			</ResultTile>
 			<br/><br/><br/><br/>
@@ -125,7 +145,7 @@ function CreateCube(props) {
 			{
 			x: [finalY], 
 			y: [finalX], 
-			z: [finalZ], 
+			z: [props.axis3], 
 			mode: 'markers', 
 			type:'scatter3d',
 			marker: {size: 12},
@@ -153,7 +173,7 @@ function CreateCube(props) {
 				},
 				zaxis: {
 					range: [-10, 10],
-					title: 'Deon - Util',
+					title: props.philosophyType,
 					backgroundcolor: "rgb(173, 216, 230)",
      				gridcolor: "rgb(255, 255, 255)",
      				showbackground: true,
@@ -163,7 +183,8 @@ function CreateCube(props) {
 						x: 0, y: 0, z: 0
 					},
 					eye: {
-						x: 0.1, y: 0.1, z: 2.5
+						// x: 0.1, y: 0.1, z: 2.5
+						x: 1.9, y: 1.9, z: 1.4
 					}
 				}
 			},
@@ -300,11 +321,11 @@ function Create2DPlot() {
 	)
 }
 
-const CalculateSliderNumber = () => {
-	if (finalZ > 0) {
-		return finalZ * 5 + 50
-	} else if (finalZ < 0) {
-		return Math.abs(finalZ * -5 - 50)
+const CalculateSliderNumber = (num) => {
+	if (num > 0) {
+		return num * 5 + 50
+	} else if (num < 0) {
+		return Math.abs(num * -5 - 50)
 	}
 	return 50
 }
@@ -312,6 +333,7 @@ const CalculateSliderNumber = () => {
 const PrettoSlider = styled(Slider)({
 	color: '#52af77',
 	height: 8,
+	marginTop: '8px',
 	'& .MuiSlider-track': {
 	  border: 'none',
 	},
