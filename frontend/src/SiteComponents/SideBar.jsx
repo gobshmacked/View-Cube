@@ -81,7 +81,7 @@ function SideBarShow(props) {
 	return (
 		<SideBarDiv>
 			<br/>
-			<SideBarOut onClick = {() => props.sideBarShowChange('hide')}><SandwichOut src = {sandwich}/></SideBarOut>
+			<SideBarOut onClick = {() => props.sideBarShowChange('hide')}><SandwichOut alt = 'side bar button' src = {sandwich}/></SideBarOut>
 			<br/>
 			<SideBarElement onClick = {() => props.pageStateChange('quiz')}>Test</SideBarElement>
 			<SideBarElement onClick = {() => props.pageStateChange('about')}>About</SideBarElement>
@@ -94,7 +94,7 @@ function SideBarHide(props) {
 	return (
 		<SideBarDivHide>
 			<br/>
-			<SideBarIn onClick = {() => props.sideBarShowChange('show')}><SandwichIn src = {sandwich}/></SideBarIn>
+			<SideBarIn onClick = {() => props.sideBarShowChange('show')}><SandwichIn alt = 'side bar button' src = {sandwich}/></SideBarIn>
 		</SideBarDivHide>
 	)
 }

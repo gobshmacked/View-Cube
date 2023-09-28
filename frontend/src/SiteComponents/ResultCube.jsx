@@ -2,7 +2,7 @@ import React from 'react'
 import Plot from 'react-plotly.js';
 import { styled } from '@mui/material'
 import Slider from '@mui/material/Slider';
-import { finalX, finalY, finalZ, finalU, finalR } from './ConfigureResults.js'
+import { finalX, finalY, finalU, finalR } from './ConfigureResults.js'
 
 const ResultsBlock = styled('div')({
 	display: 'flex',
@@ -89,7 +89,7 @@ export function ResultCube () {
 			</ResultTile>
 				<br/><br/><br/>
 			<ResultTile>
-				<InstructionHeading>Utilitarianism Consistency Scale</InstructionHeading>
+				<InstructionHeading>Utilitarianism Scale</InstructionHeading>
 				<BlackWriting>{'Utilitarianism Scale:'}&nbsp;{finalU}</BlackWriting>
 				<SliderDiv>
 					<SliderLabel>-10</SliderLabel>
@@ -99,7 +99,7 @@ export function ResultCube () {
 			</ResultTile>
 				<br/><br/><br/>
 				<ResultTile>
-				<InstructionHeading>Rational Egoism Consistency Scale</InstructionHeading>
+				<InstructionHeading>Rational Egoism Scale</InstructionHeading>
 				<BlackWriting>{'Rational Egoism Scale:'}&nbsp;{finalR}</BlackWriting>
 				<SliderDiv>
 					<SliderLabel>-10</SliderLabel>
@@ -108,23 +108,22 @@ export function ResultCube () {
 				</SliderDiv>
 			</ResultTile>
 				<br/><br/><br/>
-			<ResultTile>
-				<InstructionHeading>Your Political and Utilitarianism Alignment</InstructionHeading>
+			{finalU >= finalR && <ResultTile>
+				<InstructionHeading>Your Political Alignment Test</InstructionHeading>
 				<BlackWriting>{'Economic Scale: '}{finalX}</BlackWriting>
 				<BlackWriting>{'Social Scale: '}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{finalY}</BlackWriting>
 				<BlackWriting>{'Utilitarianism Scale: '}&nbsp;&nbsp;&nbsp;{finalU}</BlackWriting>
 				<CreateCube philosophyType = {'Util'} axis3 = {finalU}/>
 				<br/><br/><br/><br/>
-			</ResultTile>
-			<br/><br/><br/>
-			<ResultTile>
-				<InstructionHeading>Your Political and rational egoism alignment</InstructionHeading>
+			</ResultTile>}
+			{finalR > finalU && <ResultTile>
+				<InstructionHeading>Your Political Alignment Test</InstructionHeading>
 				<BlackWriting>{'Economic Scale: '}{finalX}</BlackWriting>
 				<BlackWriting>{'Social Scale: '}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{finalY}</BlackWriting>
 				<BlackWriting>{'Rational Egoism Scale: '}&nbsp;&nbsp;&nbsp;{finalR}</BlackWriting>
 				<CreateCube philosophyType = {'R Egoism'} axis3 = {finalR}/>
 				<br/><br/><br/><br/>
-			</ResultTile>
+			</ResultTile>}
 			<br/><br/><br/><br/>
 		</ResultsBlock>
 		
@@ -134,7 +133,6 @@ export function ResultCube () {
 function CreateCube(props) {
 	let finalHeight = window.innerHeight * (6/7)
 	let finalWidth = window.innerHeight * (6/7)
-	let finalZ = 2.5
 	if (window.innerWidth < 600) {
 		finalHeight = window.innerWidth * 1.1
 		finalWidth = window.innerWidth * 0.9

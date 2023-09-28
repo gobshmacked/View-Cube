@@ -21,8 +21,8 @@ app.get("/", (req, res) => {
 });
 
 app.post("/results", (req, res) => {
-	const { x, y, z } = req.body;
-	StoreQuizData(x,y,z,new Date())
+	const { x, y, u, r } = req.body;
+	StoreQuizData(x,y,u,r,new Date())
 	res.send()
 });
 

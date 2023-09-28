@@ -194,7 +194,7 @@ export function QuizPage(props) {
 				<Title1>THE</Title1>
 				<Title2Box>
 					<Title2>P</Title2>
-					<TitleLogo src = {titlelogo}/>
+					<TitleLogo alt = 'main logo' src = {titlelogo}/>
 					<Title2>LITICAL ALIGNMENT</Title2>
 				</Title2Box>
 				<Title3>Test</Title3>
@@ -230,7 +230,7 @@ function FormatQuestions (selectedOption, handleSelectionChange) {
 		formattedQuestions.push(
 			<QuestionAnswerBox>
 				{'subheading' in questions[q] && <Subheading>{questions[q].subheading + " Questions"}</Subheading>}
-				<Question>{questions[q].question + '?'}</Question>
+				<Question>{questions[q].question + '.'}</Question>
 				<Answers>
 					<button onClick = {() => handleSelectionChange(q, 'disagree')} className={selectedOption[q] === 'disagree' ? 'selected' : 'normalButton'}>Disagree</button>
 					<button onClick = {() => handleSelectionChange(q, 'neutral')} className={selectedOption[q] === 'neutral' ? 'selected' : 'normalButton'}>Neutral</button>
