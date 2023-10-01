@@ -1,7 +1,39 @@
 import React from 'react'
 import { styled } from '@mui/material'
 import sandwich from './assets/sandwich.png';
-import './styles/fonts.css'
+import './cssStyles/fonts.css'
+
+export function SideBar(props) {
+	if (props.sideBarShow === 'show') {
+		return (<SideBarShow pageStateChange = {props.pageStateChange} sideBarShowChange = {props.sideBarShowChange}/>)
+	} else {
+		return (<SideBarHide pageStateChange = {props.pageStateChange} sideBarShowChange = {props.sideBarShowChange}/>)
+	}
+}
+
+function SideBarShow(props) {
+	return (
+		<SideBarDiv>
+			<br/>
+			<SideBarOut onClick = {() => props.sideBarShowChange('hide')}><SandwichOut alt = 'side bar button' src = {sandwich}/></SideBarOut>
+			<br/>
+			<SideBarElement onClick = {() => props.pageStateChange('quiz')}>Test</SideBarElement>
+			<SideBarElement onClick = {() => props.pageStateChange('about')}>About</SideBarElement>
+			<SideBarElement onClick = {() => props.pageStateChange('contact')}>Contact</SideBarElement>
+		</SideBarDiv>
+	)
+}
+
+function SideBarHide(props) {
+	return (
+		<SideBarDivHide>
+			<br/>
+			<SideBarIn onClick = {() => props.sideBarShowChange('show')}><SandwichIn alt = 'side bar button' src = {sandwich}/></SideBarIn>
+		</SideBarDivHide>
+	)
+}
+
+// Material UI Styles //
 
 const SideBarDiv = styled('div')({
 	display: 'flex',
@@ -68,33 +100,3 @@ const SandwichIn = styled(Sandwich)({
 const SandwichOut = styled(Sandwich)({
 	background: '#22305B'
 })
-
-export function SideBar(props) {
-	if (props.sideBarShow === 'show') {
-		return (<SideBarShow pageStateChange = {props.pageStateChange} sideBarShowChange = {props.sideBarShowChange}/>)
-	} else {
-		return (<SideBarHide pageStateChange = {props.pageStateChange} sideBarShowChange = {props.sideBarShowChange}/>)
-	}
-}
-
-function SideBarShow(props) {
-	return (
-		<SideBarDiv>
-			<br/>
-			<SideBarOut onClick = {() => props.sideBarShowChange('hide')}><SandwichOut alt = 'side bar button' src = {sandwich}/></SideBarOut>
-			<br/>
-			<SideBarElement onClick = {() => props.pageStateChange('quiz')}>Test</SideBarElement>
-			<SideBarElement onClick = {() => props.pageStateChange('about')}>About</SideBarElement>
-			<SideBarElement onClick = {() => props.pageStateChange('contact')}>Contact</SideBarElement>
-		</SideBarDiv>
-	)
-}
-
-function SideBarHide(props) {
-	return (
-		<SideBarDivHide>
-			<br/>
-			<SideBarIn onClick = {() => props.sideBarShowChange('show')}><SandwichIn alt = 'side bar button' src = {sandwich}/></SideBarIn>
-		</SideBarDivHide>
-	)
-}

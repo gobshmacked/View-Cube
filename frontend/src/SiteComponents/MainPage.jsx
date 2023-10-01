@@ -4,13 +4,8 @@ import { QuizPage } from './QuizPage'
 import { ResultCube } from './ResultCube'
 import { AboutPage } from './AboutPage'
 import { ContactPage } from './ContactPage'
-import './styles/fonts.css'
+import './cssStyles/fonts.css'
 
-const Page = styled('div')({
-	display: 'flex',
-	background: '#DEEFFF',
-	height: '100'
-})
 
 export function MainPage(props) {
 	return (
@@ -22,3 +17,11 @@ export function MainPage(props) {
 		</Page>
 	)
 }
+
+// Material UI Styles //
+
+const Page = styled('div')({
+	display: 'flex',
+	background: '#DEEFFF',
+	height: '100'
+})

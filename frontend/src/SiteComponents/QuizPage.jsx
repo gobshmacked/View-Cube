@@ -3,7 +3,81 @@ import { styled } from '@mui/material'
 import { questions } from '../questions.js'
 import { ConfigureResults } from './ConfigureResults.js'
 import titlelogo from './assets/titlelogo.png';
-import './styles/QuizPage.css'
+import './cssStyles/QuizPage.css'
+
+export function QuizPage(props) {
+	const [selectedOption, setSelectedOption] = React.useState(Array(questions.length).fill(0));
+	const handleSelectionChange = (index, element) => {
+		let tempArr = [...selectedOption]
+		if (tempArr[index] === element) {
+			tempArr[index] = 0
+		} else {
+			tempArr[index] = element
+		}
+		setSelectedOption(tempArr)
+	}
+	let formattedQuestions = FormatQuestions(selectedOption, handleSelectionChange)
+	return (
+		<QuizBox>
+			<TitleBox>
+				<Title1>THE</Title1>
+				<Title2Box>
+					<Title2>P</Title2>
+					<TitleLogo alt = 'main logo' src = {titlelogo}/>
+					<Title2>LITICAL ALIGNMENT</Title2>
+				</Title2Box>
+				<Title3>Test</Title3>
+			</TitleBox>
+			<WritingBlock>
+				<Writing>The political alignment test plots your economic, social and moral values on a 3D cube graph in just 2 - 15 minutes!</Writing>
+				<Writing>Select whether you are neutral to the question, if you agree with the question or if you disagree with the question.</Writing>
+				<Writing>Think carefully about your answers and try to be truthful. Any unanswered questions will be set to neutral.</Writing>
+				<Writing>Once completed, click submit to receive your Political Alignment results!</Writing>
+			</WritingBlock>
+			<AllQuestions>
+				{formattedQuestions.map((questionGroup, questionIndex) => (
+					<QuestionTile key = {questionIndex}>
+						{questionGroup.map((item, index) => (
+							<CompleteQuestionBox key = {index + questionIndex * 17}>{item}</CompleteQuestionBox>
+							))}
+					</QuestionTile>
+				))}
+			</AllQuestions>
+			<SubmitQuiz onClick = {() => ClickedSubmit(selectedOption, props.pageStateChange)}>Submit Answers</SubmitQuiz>
+		</QuizBox>
+	)
+}
+
+function FormatQuestions (selectedOption, handleSelectionChange) {
+	let formattedTiles = []
+	let formattedQuestions = []
+	for (const q in questions) {
+		if ('subheading' in questions[q] && formattedQuestions.length !== 0) {
+			formattedTiles.push(formattedQuestions)
+			formattedQuestions = []
+		}
+		formattedQuestions.push(
+			<QuestionAnswerBox>
+				{'subheading' in questions[q] && <Subheading>{questions[q].subheading + " Questions"}</Subheading>}
+				<Question>{questions[q].question + '.'}</Question>
+				<Answers>
+					<button onClick = {() => handleSelectionChange(q, 'disagree')} className={selectedOption[q] === 'disagree' ? 'selected' : 'normalButton'}>Disagree</button>
+					<button onClick = {() => handleSelectionChange(q, 'neutral')} className={selectedOption[q] === 'neutral' ? 'selected' : 'normalButton'}>Neutral</button>
+					<button onClick = {() => handleSelectionChange(q, 'agree')} className={selectedOption[q] === 'agree' ? 'selected' : 'normalButton'}>Agree</button>
+				</Answers>
+			</QuestionAnswerBox>
+		)
+	}
+	formattedTiles.push(formattedQuestions)
+	return formattedTiles
+}
+
+function ClickedSubmit(answers, pageStateChange) {
+	ConfigureResults(answers)
+	pageStateChange('results')
+}
+
+// Material UI Styles //
 
 const QuizBox = styled('div')({
 	display: 'flex',
@@ -175,75 +249,3 @@ const Title2Box = styled('div')({
 	flexDirection: 'row',
 	justifyContent: 'center'
 })
-
-export function QuizPage(props) {
-	const [selectedOption, setSelectedOption] = React.useState(Array(questions.length).fill(0));
-	const handleSelectionChange = (index, element) => {
-		let tempArr = [...selectedOption]
-		if (tempArr[index] === element) {
-			tempArr[index] = 0
-		} else {
-			tempArr[index] = element
-		}
-		setSelectedOption(tempArr)
-	}
-	let formattedQuestions = FormatQuestions(selectedOption, handleSelectionChange)
-	return (
-		<QuizBox>
-			<TitleBox>
-				<Title1>THE</Title1>
-				<Title2Box>
-					<Title2>P</Title2>
-					<TitleLogo alt = 'main logo' src = {titlelogo}/>
-					<Title2>LITICAL ALIGNMENT</Title2>
-				</Title2Box>
-				<Title3>Test</Title3>
-			</TitleBox>
-			<WritingBlock>
-				<Writing>The political alignment test plots your economic, social and moral values on a 3D cube graph in just 2 - 15 minutes!</Writing>
-				<Writing>Select whether you are neutral to the question, if you agree with the question or if you disagree with the question.</Writing>
-				<Writing>Think carefully about your answers and try to be truthful. Any unanswered questions will be set to neutral.</Writing>
-				<Writing>Once completed, click submit to receive your Political Alignment results!</Writing>
-			</WritingBlock>
-			<AllQuestions>
-				{formattedQuestions.map((questionGroup, questionIndex) => (
-					<QuestionTile key = {questionIndex}>
-						{questionGroup.map((item, index) => (
-							<CompleteQuestionBox key = {index + questionIndex * 17}>{item}</CompleteQuestionBox>
-						))}
-					</QuestionTile>
-				))}
-			</AllQuestions>
-			<SubmitQuiz onClick = {() => ClickedSubmit(selectedOption, props.pageStateChange)}>Submit Answers</SubmitQuiz>
-		</QuizBox>
-	)
-}
-
-function FormatQuestions (selectedOption, handleSelectionChange) {
-	let formattedTiles = []
-	let formattedQuestions = []
-	for (const q in questions) {
-		if ('subheading' in questions[q] && formattedQuestions.length !== 0) {
-			formattedTiles.push(formattedQuestions)
-			formattedQuestions = []
-		}
-		formattedQuestions.push(
-			<QuestionAnswerBox>
-				{'subheading' in questions[q] && <Subheading>{questions[q].subheading + " Questions"}</Subheading>}
-				<Question>{questions[q].question + '.'}</Question>
-				<Answers>
-					<button onClick = {() => handleSelectionChange(q, 'disagree')} className={selectedOption[q] === 'disagree' ? 'selected' : 'normalButton'}>Disagree</button>
-					<button onClick = {() => handleSelectionChange(q, 'neutral')} className={selectedOption[q] === 'neutral' ? 'selected' : 'normalButton'}>Neutral</button>
-					<button onClick = {() => handleSelectionChange(q, 'agree')} className={selectedOption[q] === 'agree' ? 'selected' : 'normalButton'}>Agree</button>
-				</Answers>
-			</QuestionAnswerBox>
-		)
-	}
-	formattedTiles.push(formattedQuestions)
-	return formattedTiles
-}
-
-function ClickedSubmit(answers, pageStateChange) {
-	ConfigureResults(answers)
-	pageStateChange('results')
-}

@@ -2,17 +2,6 @@ import React from 'react'
 import { styled } from '@mui/material'
 import {WritingBlock, InstructionHeading2, Writing} from './AboutPage'
 
-const ContactWrapper = styled('div')({
-	display: 'flex',
-	flexDirection: 'column',
-	width: '50%',
-	marginLeft: 'auto',
-	marginRight: 'auto',
-	'@media (max-width: 600px)': {
-		width: '90%'
-	}
-})
-
 export function ContactPage() {
 	return (
 		<ContactWrapper>
@@ -26,3 +15,16 @@ export function ContactPage() {
 		</ContactWrapper>
 	)
 }
+
+// Material UI Styles //
+
+const ContactWrapper = styled('div')({
+	display: 'flex',
+	flexDirection: 'column',
+	width: '50%',
+	marginLeft: 'auto',
+	marginRight: 'auto',
+	'@media (max-width: 600px)': {
+		width: '90%'
+	}
+})
