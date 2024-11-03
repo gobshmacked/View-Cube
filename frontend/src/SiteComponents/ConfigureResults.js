@@ -46,7 +46,7 @@ function CalculateResults(userInput) {
 	finalY = tempY.toFixed(1)
 	finalU = tempU.toFixed(1)
 	finalR = tempR.toFixed(1)
-	SaveResults(finalX, finalY, finalU, finalR)
+	// SaveResults(finalX, finalY, finalU, finalR)
 }
 
 
